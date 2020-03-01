@@ -42,9 +42,11 @@ namespace cw1
             var httpClient = new HttpClient();
             var listOfEmails = new List<string>();
             var response = await httpClient.GetAsync(url);
+            httpClient.Dispose();
             Regex emailRegex = new Regex(@"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", RegexOptions.IgnoreCase);
             string content = response.Content.ReadAsStringAsync().Result;
-  
+            response.Dispose();
+            
             MatchCollection emailMatches = emailRegex.Matches(content);
             
             foreach (var emailMatch in emailMatches)

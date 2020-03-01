@@ -30,6 +30,10 @@ namespace cw1
             } 
 
             var emails = await GetEmails(args[0]);
+            if (emails.Count == 0)
+            {
+                Console.WriteLine("Nie znaleziono adresow");
+            }
             
             foreach(var email in emails)
             {

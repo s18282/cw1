@@ -55,7 +55,10 @@ namespace cw1
             
             foreach (var emailMatch in emailMatches)
             {
-                listOfEmails.Add(emailMatch.ToString());
+                if (!listOfEmails.Contains(emailMatch.ToString()))
+                {
+                    listOfEmails.Add(emailMatch.ToString());
+                }
             }
             return listOfEmails;
         }
